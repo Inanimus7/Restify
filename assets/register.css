@@ -1,0 +1,57 @@
+@font-face {
+  font-family: "RobotoR";
+  font-weight: 400;
+  src: url('assets/fonts/Roboto-Regular.ttf');
+}
+
+@font-face {
+  font-family: "RobotoL";
+  font-weight: 300;
+  src: url('assets/fonts/Roboto-Light.ttf');
+}
+html,
+body {
+  margin: 0;
+  padding: 0;
+  color: #000;
+  background: #fff;
+  font-family: "RobotoL", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+body > header {
+  box-shadow: 0px 4px 4px 1px rgba(0, 0, 0, 0.15);
+  position: fixed;
+  background: #fff;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 99999;
+  text-align: center;
+}
+main.container{
+background: url("images/landingpage.jpg") no-repeat center center;
+background-size: 100%;
+padding: 155px 0 300px 0;
+position: relative;
+top: -110px;
+}
+main .form {
+  background: #fff;
+  width: 30%;
+  margin: 100px auto 100px;
+  box-sizing: border-box;
+  padding: 0 0 200px 0;
+  border-radius: 12px;
+  position: relative;
+/* FOOTER SECTION */
+body > footer {
+  background: #ccc;
+  border-top: 3px solid #808080;
+}
+    body > footer p {
+      color: #616161;
+      font-size: 14px;
+      text-align: center;
+      margin: 0;
+      padding: 25px 0;

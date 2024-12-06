@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Restify</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/fontawesome.min.css">
+    <link rel="stylesheet" href="register.css">
+</head>
+<body>
+    <div class="img-background"></div>
+    <div class="main-content">
+        <form method="POST" action="index.php" class="registration-form">
+            <h1>Welcome to Restify</h1>
+            <h2>Your Journey Begins Here!</h2>
+            <p>Create your Account</p>
+
+            <!-- First Name and Last Name Fields -->
+            <div class="form-row">
+                <div class="form-group input-field">
+                    <input type="text" maxlength="32" name="first_name" pattern="[A-Za-z]{1,28}" required>
+                    <label for="firstName"><span style="color: red;">* </span>First Name</label>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group input-field">
+                    <input id="lastName" type="text" required>
+                    <label for="lastName"><span style="color: red;">* </span>Last Name</label>
+                </div>
+            </div>
+
+            <!-- Email Field -->
+            <div class="form-row">
+                <div class="form-group input-field">
+                    <input id="emailAddress" type="email" required>
+                    <label for="emailAddress"><span style="color: red;">* </span>E-mail</label>
+                </div>
+                <div class="email-error d-none">Please enter a valid e-mail.</div>
+            </div>
+
+            <!-- Password and Confirm Password Fields -->
+            <div class="form-row">
+                <div class="form-group input-field">
+                    <input name="formPassword" id="formPassword" type="password" required>
+                    <label for="formPassword"><span style="color: red;">* </span>Password</label>
+                </div>
+                <div class="password-error d-none">Your password must contain at least 8 characters.</div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group input-field">
+                    <input id="confirmPassword" type="password" required>
+                    <label for="confirmPassword"><span style="color: red;">* </span>Confirm Password</label>
+                </div>
+                <div class="passwordMatch-error d-none">Please make sure your passwords match.</div>
+            </div>
+            <div class="checkbox-container">
+                <input type="checkbox" id="showPassword" onclick="togglePasswordVisibility()"> 
+                <label for="showPassword">Show Password</label>
+            </div>
+            <!-- Agree Terms button -->
+            <div class="form-group terms-checkbox">
+                <input id="agreeTerms" name="agreeTerms" type="checkbox" class="terms-checkbox-input">
+                <label for="agreeTerms" class="checkbox-label terms">I have understood and agree with the Terms of Service<span style="color: red;">* </span> </label>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="form-row form-submit">
+                <input id="submitButton" name="submit" type="button" value="Sign-Up" class="submit-button" onclick="window.location.href='index.html';">
+            </div>
+            <!-- Add this message somewhere in your form, typically near the submit button -->
+            <div id="formErrorMessage" class="d-none formErrorMessage">Please fill all required fields.</div>
+        </div>
+        </form>
+    </div>    
+    <footer>
+        <p>&copy; Copyright Inanimus Web Development 2024</p>
+    </footer>
+    <script src="register.js"></script>
+</body>
+</html>

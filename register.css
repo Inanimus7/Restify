@@ -1,0 +1,285 @@
+/* Global reset and styles */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Background */
+.img-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('assets/images/Sliders/slider 3.jpg'),linear-gradient(to bottom, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.7));
+    filter: brightness(0.5);
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+}
+
+/* Main content */
+.main-content {
+    height: 100%; /* Ensure it takes full height */
+    display: flex;
+    justify-content: flex-start; /* Align items to the left */
+    align-items: flex-start; /* Align items to the top */
+    padding-left: 10px; /* Optional padding to the left */
+    overflow: hidden; /* Prevent overflow outside of the container */
+}
+
+/* Updated form styles */
+.registration-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+    max-width: 450px;
+    background-color: rgba(255, 255, 255, 0.35);
+    backdrop-filter: blur(10px);
+    padding: 15px 50px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+    color: #ffffff;
+    position: relative;
+    margin-top: 80px;
+    margin-left: 20px;
+    max-height: 90%;
+    overflow-y: auto;
+}
+    .registration-form h1 {
+        text-align: center;
+        border: solid 1px #fff;
+        border-radius: 10px;
+    }
+    
+
+    .registration-form h2 {
+        font-size: 25px;
+        text-align: center;
+    }
+    
+    .registration-form p {
+        margin: 20px 0 10px;
+         text-align: center;
+}
+    
+/* Form-row styles (keeping them as column layout) */
+.form-row {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Input and label styles */
+.input-field {
+    position: relative;
+    flex: 1;
+}
+
+/* Adjust the input field itself to have proper space for the label */
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px 15px 10px 15px; /* Add padding for space inside */
+    border: none;
+    border-bottom: 2px solid #fff;
+    background: transparent;
+    color: #fff;
+    font-size: 16px;
+    position: relative; /* Required for label to be absolutely positioned */
+}
+/* Focus state for input fields */
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
+    outline: none;
+    border-bottom: 2px solid #fff;
+}
+input#agreeTerms {
+    margin: 1px 5px 0 0;
+    border: #fff;
+}
+
+
+/* Label styles */
+label {
+    position: absolute;
+    left: 15px; /* Initial left position */
+    top: 12px;  /* Initial top position (inside the input) */
+    color: #fff;
+    font-size: 16px;
+    transition: all 0.3s ease-in-out;
+    pointer-events: none; /* Ensures label doesn’t block input */
+    opacity: 0.6; /* Slightly dim when not focused or filled */
+}
+
+/* Slide-up effect on label when input is focused or contains text */
+input:focus + label,
+input:not(:placeholder-shown) + label {
+    top: -16px; /* Move label 16px up */
+    left: 14px;
+    font-size: 12px; /* Shrink font size */
+    color: #fff;
+    opacity: 1; /* Make label fully visible when active */
+}
+
+/* Error message styles */
+.password-error,
+.passwordMatch-error,
+.email-error,
+#formErrorMessage {
+    color: #fff !important;
+    font-size: 12px;
+    margin: -20px 5px 5px;
+    background: #f10606;
+    border-radius: 5px;
+    text-align: center;
+}
+
+/* Checkbox section */
+.checkbox-section {
+    display: flex;
+    flex-direction: column;
+    z-index: 10; /* Ensure checkbox is above other elements */
+}
+
+/* Static positioning for checkbox labels */
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    color: #fff;
+    font-size: 14px;
+}
+
+/* Ensuring the checkbox itself is clickable */
+.checkbox-input {
+    margin-right: 10px;
+    z-index: 11; /* Ensure checkbox has a higher z-index */
+    position: relative; /* Ensure it’s on top of other elements */
+}
+
+/* Set static position for checkbox container label */
+label.checkbox-label,
+.checkbox-container label {
+    position: static; /* Set position to static to prevent it from covering the checkbox */
+}
+
+.checkbox-container {
+    margin: -20px 0 -5px;
+}
+
+/* Make checkbox and label appear next to each other */
+.terms-checkbox {
+    display: flex; /* Use flexbox to position items side by side */
+    align-items: center; /* Align checkbox and label vertically */
+    gap: 10px; /* Optional: Adds space between checkbox and label */
+}
+
+/* Checkbox styling */
+.terms-checkbox-input {
+    margin: 0; /* Remove default margin */
+}
+
+/* Label styling */
+.checkbox-label.terms {
+    color: #fff;
+    font-size: 12px;
+    cursor: pointer;
+    margin: 5px 0 0 -10px;
+}
+/* Optional: Add hover effect for the label */
+.checkbox-label.terms:hover {
+    text-decoration: underline;
+}
+/* Submit button */
+.form-submit {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.submit-button {
+    width: 100%;
+    padding: 12px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+    margin: 0 0 20px;
+}
+
+.submit-button:hover {
+    background-color: #555;
+}
+/* Error message styles */
+.error-msg {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+/* Hidden error messages initially */
+.d-none {
+    display: none;
+}
+/* Footer styles */
+footer {
+    flex-shrink: 0;
+    background: #495057d9;
+    text-align: center;
+    font-size: 12px;
+    width: 100%;
+    border-top: solid 2px #383d41;
+    box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.15);
+}
+
+footer p {
+    color: #ced4da;
+    margin: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .registration-form {
+        width: 100%;
+        padding: 20px;
+    }
+}
+
+/* Slide-in animation */
+@keyframes slide-in {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.slide-in {
+    animation: slide-in 0.5s ease forwards;
+}
+/* Shake animation */
+@keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-10px); }
+    50% { transform: translateX(10px); }
+    75% { transform: translateX(-10px); }
+    100% { transform: translateX(0); }
+}
+
+/* Class to trigger the shake animation */
+.shake {
+    animation: shake 0.5s ease forwards;
+}

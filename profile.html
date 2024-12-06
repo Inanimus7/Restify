@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restify</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/fontawesome.min.css">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="profile.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+</head>
+<body>
+    <header>
+        <div class="left-content">
+            <div class="restify-title">
+                <h1>Restify.</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#services">Hotels</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="right-content">
+            <div class="profile-icon">
+                <a href="profile.html">
+                    <i class="fas fa-user"></i>
+                    <span>Profile</span>
+                </a>
+            </div>
+            <div class="log-out-btn">
+                <button class="btn"><i class="fa-solid fa-power-off"></i></button>
+            </div>
+        </div>
+    </header>
+    <div class="wrapper">
+        <aside class="profile-toggle">
+            <div class="upper-aside-section">
+                <div class="user-profile">
+                    <img id="profile-image" src="" alt="User Image" />
+                    <i id="fallback-icon" class="fas fa-user"></i>
+                </div>
+                <div class="file-upload-container">
+                    <input type="file" id="file-upload" class="file-input" accept="image/*" />
+                    <label for="file-upload" class="file-label">
+                        <i class="fa-solid fa-camera"></i> Upload your Photo
+                    </label>
+                </div>
+            </div>
+            <div class="user-options">
+                <ul>
+                    <li data-target="personal-info"><i class="fa-solid fa-user"></i> Personal Info</li>
+                    <li data-target="booking-history"><i class="fa-solid fa-clock-rotate-left"></i> Booking History</li>
+                    <li data-target="settings"><i class="fa-solid fa-gear"></i> Settings</li>
+                </ul>
+            </div>
+        </aside>
+        <main class="main-content">
+            <div id="personal-info" class="content-section">
+                <h2>Personal Info</h2>
+                <p>Your personal details go here.</p>
+            </div>
+            
+            <div id="booking-history" class="content-section">
+                <h2>Booking History</h2>
+                <p>Here is your booking history.</p>
+            </div>
+            
+            <div id="settings" class="content-section">
+                <h2>Settings</h2>
+                <p>Customize your preferences here.</p>
+            </div>
+        </main>
+    </div>
+    <footer>
+        <p>&copy; Copyright Inanimus Web Development 2024</p>
+    </footer>
+    <script src="profile.js"></script>
+</body>
+</html>
