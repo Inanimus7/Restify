@@ -1,0 +1,312 @@
+/* ==========================================================================
+   Global Styles
+   ========================================================================== */
+/* Reset default margins/padding and set full-height flex layout */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Poppins', sans-serif; /* Default font for the page */
+}
+
+/* Hide text cursor across all elements for a cleaner look */
+* {
+    caret-color: transparent;
+}
+
+/* ==========================================================================
+   Background
+   ========================================================================== */
+/* Full-screen background with image and gradient overlay */
+.img-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('images/backgrounds/index-background.jpg'), linear-gradient(to bottom, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.7));
+    filter: brightness(0.5); /* Dim the background for contrast */
+    background-size: cover;
+    background-position: center;
+    z-index: -1; /* Keep behind all content */
+}
+
+/* ==========================================================================
+   Header Section
+   ========================================================================== */
+/* Header bar with branding */
+header {
+    width: 100%;
+    background: rgba(73, 80, 87, 0.85); /* Semi-transparent gray */
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+    padding: 5px 30px;
+    flex-shrink: 0; /* Prevent shrinking in flex layout */
+}
+
+/* Styling for the site title/link in header */
+.restify-title a {
+    font-size: 26px;
+    color: #fff;
+    margin: 0; /* Remove default margin for alignment */
+}
+
+/* ==========================================================================
+   Main Content Section
+   ========================================================================== */
+/* Center the form vertically and horizontally */
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 92.5vh; /* Full height minus header/footer */
+}
+
+/* ==========================================================================
+   Login Form Section
+   ========================================================================== */
+/* Main form container with animation and shadow */
+.login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+    padding: 40px;
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+    gap: 30px; /* Space between form elements */
+    background: linear-gradient(135deg, #ffffff, #f8f9fa); /* Subtle gradient */
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    transition: box-shadow 0.3s ease, transform 0.3s ease; /* Hover effects */
+    position: relative; /* Context for absolute-positioned errors */
+    min-height: 450px; /* Ensure space for error messages */
+}
+
+/* Form header with title and prompt */
+.form-header {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    padding: 5px;
+    margin: 5px;
+}
+
+/* Prompt text styling within form header */
+.form-header p {
+    color: #495057;
+    margin-bottom: 15px;
+}
+
+/* Login button styling */
+#login-btn {
+    width: 100%;
+    padding: 12px 100px;
+    font-size: 20px; /* Fixed typo from '20p' to '20px' for consistency */
+    background-color: #007bff; /* Blue button */
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+}
+
+/* Button hover state */
+#login-btn:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Button focus state (removes default outline) */
+#login-btn:focus {
+    outline: none;
+}
+
+/* Registration link section */
+.createAccount {
+    display: flex;
+    gap: 5px;
+    flex-direction: column;
+    text-align: center;
+    flex-wrap: nowrap;
+    margin: 0px;
+    padding: 10px 0px;
+}
+
+/* Text styling within registration section */
+.createAccount p {
+    margin-bottom: 0px;
+}
+
+/* ==========================================================================
+   Form Input Groups
+   ========================================================================== */
+/* Container for input, label, and icon */
+.form-group {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+/* Input field styling */
+.form-group input {
+    width: 100%;
+    padding: 10px 35px 10px 10px; /* Space for icon on right */
+    font-size: 1rem;
+    border: none;
+    border-bottom: 2px solid #979797; /* Gray underline */
+    background: transparent;
+    outline: none;
+    transition: border-color 0.3s ease-in-out; /* Smooth color change */
+}
+
+/* Input focus state */
+.form-group input:focus {
+    border-color: #007bff; /* Blue underline on focus */
+}
+
+/* Label positioning and animation */
+.form-group label {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    font-size: 1rem;
+    color: #6c757d; /* Gray text */
+    transition: all 0.3s ease-in-out; /* Smooth movement */
+    pointer-events: none; /* Prevent interference with input */
+}
+
+/* Label movement when input is focused or filled */
+.form-group input:focus + label,
+.form-group input:not(:placeholder-shown) + label {
+    top: 0;
+    font-size: 0.8rem;
+    color: #007bff; /* Blue text on focus */
+}
+
+/* Icon styling within input group */
+.form-group i {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #6c757d; /* Gray icon */
+    font-size: 1rem;
+    transition: color 0.3s ease-in-out; /* Smooth color change */
+}
+
+/* Icon color change on input focus */
+.form-group input:focus ~ i {
+    color: #007bff; /* Blue icon on focus */
+}
+
+/* ==========================================================================
+   Error Messages
+   ========================================================================== */
+/* Email error message (absolute positioned below email input) */
+.email-error {
+    position: absolute;
+    top: 290px; /* Positioned below email field */
+    left: 40px;
+    right: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    color: #dc3545; /* Red text */
+    font-size: 0.8rem;
+    border: solid 1px red;
+    border-radius: 5px;
+    background: #ebd9d9; /* Light red background */
+    opacity: 0; /* Hidden by default */
+    transition: opacity 0.3s ease; /* Fade effect */
+    pointer-events: none; /* No interaction when hidden */
+}
+
+/* Visible state for email error with shake animation */
+.email-error:not(.d-none) {
+    opacity: 1;
+    pointer-events: auto;
+    animation: shake 0.4s ease;
+}
+
+/* General form error message (absolute positioned below button) */
+.form-error {
+    position: absolute;
+    top: 545px; /* Positioned below login button */
+    left: 40px;
+    right: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    color: #dc3545; /* Red text */
+    font-size: 0.8rem;
+    border: solid 1px red;
+    border-radius: 5px;
+    background: #ebd9d9; /* Light red background */
+    opacity: 0; /* Hidden by default */
+    transition: opacity 0.3s ease; /* Fade effect */
+    pointer-events: none; /* No interaction when hidden */
+}
+
+/* Visible state for form error with shake animation */
+.form-error:not(.d-none) {
+    opacity: 1;
+    pointer-events: auto;
+    animation: shake 0.4s ease;
+}
+
+.password-error {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2px;
+    color: #dc3545; 
+    font-size: 0.8rem;
+    border: solid 1px red;
+    border-radius: 5px;
+    background: #ebd9d9;
+    pointer-events: none;
+    padding:0px 5px;
+}
+    .password-error:not(.d-none) {
+        animation: shake 0.4s ease;
+    }
+/* ==========================================================================
+   Footer Section
+   ========================================================================== */
+/* Footer with copyright notice */
+footer {
+    flex-shrink: 0; /* Prevent shrinking in flex layout */
+    background: #495057d9; /* Semi-transparent dark gray */
+    text-align: center;
+    font-size: 12px;
+    width: 100%;
+    border-top: solid 2px #383d41; /* Dark border */
+    box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.15); /* Shadow for depth */
+}
+
+/* Footer text styling */
+footer p {
+    color: #ced4da; /* Light gray text */
+    margin: 0;
+}
+
+/* ==========================================================================
+   Animations
+   ========================================================================== */
+/* Shake animation for error messages */
+@keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
+    100% { transform: translateX(0); }
+}
+.shake {
+    animation: shake 0.3s ease-in-out;
+}
