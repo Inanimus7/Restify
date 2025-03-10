@@ -1,0 +1,234 @@
+/* Global reset and styles */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    caret-color: transparent;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Header styles */
+header {
+    width: 100%;
+    background: rgba(73, 80, 87, 0.85);
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+    padding: 5px 30px;
+    flex-shrink: 0; /* Prevents header from shrinking */
+}
+
+.restify-title h1 {
+    font-size: 26px;
+    color: #fff;
+    margin: 0;
+}
+
+/* Main content wrapper */
+main {
+    flex: 1; /* Takes remaining space between header and footer */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Wrapper styles */
+.wrapper {
+    width: 100%;
+    flex: 1; /* Takes all available space within main */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+}
+
+/* Container positioning */
+.container {
+    display: flex;
+    width: 100%;
+    height: 100%; /* Inherits height from wrapper */
+    max-width: 100vw !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Form styles */
+.form-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    border: 1px solid #ccc; /* Lighter border to add depth */
+    border-radius: 15px;
+    padding: 30px; /* Padding between form elements and container edges */
+    background: linear-gradient(135deg, #f9f9f9, #f0f0f0); /* Subtle gradient for depth */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); /* Soft shadow for lifted effect */
+    position: relative;
+    z-index: 1; /* Ensures the container appears above the background */
+}
+
+form {
+    width: 50%;
+    background: white;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    text-align: left;
+    justify-content: space-evenly;
+}
+
+.form-header {
+    text-align: center;
+    font-size: 3.5rem;
+    font-weight: 300;
+    color: #495057;
+    margin: 20px 0px 80px;
+}
+
+.form-group {
+    width: 50%;
+    align-self: center;
+    position: relative;
+    margin-bottom: 20px;
+    padding-bottom: 25px;
+}
+
+.form-group input {
+    border: none;
+    border-bottom: solid 1px #979797;
+    border-radius: 0px;
+    padding: 15px 10px;
+    width: 100%;
+    font-size: 1rem;
+}
+
+.form-group label {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    font-size: 1rem;
+    color: #495057;
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus + label,
+.form-group input:not(:placeholder-shown) + label {
+    top: -10px;
+    left: 0;
+    font-size: 0.8rem;
+    color: #007bff;
+}
+
+.form-group input:hover,
+.form-group input:focus,
+.form-group input:visited,
+.form-group input:active {
+    border: solid 1px #979797;
+    border-radius: 10px;
+    outline: none;
+    caret-color: auto;
+}
+
+
+
+
+/* Error message styles */
+.email-error,
+.password-error,
+.passwordMatch-error,
+.formErrorMessage {
+    color: #dc3545;
+    font-size: 0.8rem;
+    margin-top: 5px;
+    position: absolute;
+    left: 0;
+}
+.formErrorMessage {
+    position: static;
+    text-align: center;
+}
+
+/* Button styles */
+.form-group.button-position {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#sign-up-btn {
+    width: 100%;
+    padding: 12px 40px;
+    font-size: 1.2rem;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#sign-up-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Checkbox styles */
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Adjusts the space between label and checkbox */
+}
+
+.checkbox-container label {
+    position: static; /* Overrides the absolute positioning from .form-group label */
+    transform: none; /* Removes the transform from .form-group label */
+    margin: 0; /* Ensures no extra margin */
+    font-size: 1rem;
+    color: #495057;
+}
+
+.checkbox-container input[type="checkbox"] {
+    margin: 0; /* Removes default margin */
+    width: auto; /* Ensures checkbox doesn't stretch */
+}
+/* Image Holder */
+.image-holder {
+    width: 50%;
+    height: 100%; /* Inherits height from container */
+    background-image: url('images/backgrounds/sign-up.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.login-link {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 0px;
+}
+
+    .login-link p {
+        margin:0px;
+    }
+/* Footer styles */
+footer {
+    flex-shrink: 0;
+    background: #495057d9;
+    text-align: center;
+    font-size: 12px;
+    width: 100%;
+    border-top: solid 2px #383d41;
+    box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.15);
+}
+
+footer p {
+    color: #ced4da;
+    margin: 0;
+}
