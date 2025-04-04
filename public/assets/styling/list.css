@@ -1,0 +1,974 @@
+/* Global reset and styles */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    flex-direction: column; /* Arrange body contents in a column */
+}
+* {
+    caret-color: transparent;
+    box-sizing: border-box;
+    cursor:default;
+}
+
+
+/* Header styles */
+header {
+    display: flex;
+    justify-content: space-between; /* Space between the left and right content */
+    align-items: center;
+    width: 100%;
+    background: rgba(73, 80, 87, 0.85);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 15px 30px;
+}
+
+/* Left content (Restify + nav) */
+.left-content {
+    display: flex;
+    align-items: center;
+    gap: 30px;  /* Adjust this gap as needed */
+}
+
+/* Restify title styling */
+.restify-title a {
+    font-size: 26px;
+    color: #e9ecef;
+    margin: 0;
+}
+    .restify-title a:hover {
+        color:#fff;
+        text-decoration: none;
+        cursor:pointer;
+    }
+
+/* Navigation menu styling */
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px; /* Even gap between nav items */
+    margin: 0;
+}
+
+nav ul li a {
+    color: #ced4da;
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: #fff;
+    cursor:pointer;
+}
+
+/* Auth buttons on the right */
+.auth-buttons {
+    display: flex;
+    gap: 10px;  /* Space between buttons */
+    align-items: center;
+}
+    .profile-btn a {
+        color: #fff;
+        font-size: 14px;
+        padding: 5px;
+    }
+        
+        .profile-btn i.fas.fa-user{
+            margin-right: 5px;
+            padding: 10px;
+            background: #979797;
+            border-radius: 50px;
+        }
+        .profile-btn a:hover,
+        .profile-btn i.fas.fa-user:hover {
+            color:#bbbbbb;
+            cursor:pointer;
+    
+        }
+        
+        
+    .logout-btn i {
+        padding: 7px;
+        margin: 5px;
+        color: #dc3545;
+        background: #383d41;
+        border-radius: 50px;    
+    }
+    .logout-btn i:hover {
+        background:#fff;
+        cursor:pointer;
+    }
+
+/* Main content Styles */
+.wrapper {
+    flex: 1; /* Allows main content to grow and push footer down */
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: flex-start;  /* Align to top for clear separation */
+    justify-content: space-around;
+    gap: 20px; /* Adjust gap between main and aside */
+    padding: 50px;
+}
+
+/* Main content box styling */
+.results {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+    flex: 3;
+}
+    main.results h2 {
+         font-size: 15px;
+         font-weight: 200;
+         color: #007bff;
+}
+    main.results h7 {
+        font-size: 15px;
+        font-weight: 100;
+        color: #dc3545;;
+    }
+
+.number-of-results {
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 10px; /* Add space below it */
+}
+
+.results h1 {
+    font-size: 30px;
+    font-weight: bolder;
+    margin-bottom: 50px;
+}
+/* Aside content box styling */
+button.back-button {
+    color: #000;
+    margin-bottom: 10px;
+    border: none;
+    font-weight: bolder;
+    font-size: 25px;
+    cursor:pointer;
+    outline:none;
+    background: #fff;
+}
+        button.back-button:hover{
+            color:#979797;
+            cursor:pointer;
+        }
+.current-search-criteria {
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #e0e0e0;  /* Light border to define boundaries */
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3); /* Consistent shadow with main */
+    flex: 1; /* Adjust width proportion */
+}
+
+main.results {
+    margin-bottom: 150px;
+}
+/* Image Zoom Overlay Styles */
+.zoom-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease;
+}
+
+.zoom-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.zoomed-image {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+}
+
+.zoom-overlay.active .zoomed-image {
+    transform: scale(1);
+}
+/* Left-side Stylings */
+.results h1 {
+    font-size: 30px;
+    margin: 5px 0px;
+}
+
+.results-img {
+    background-image: url(images/rooms/room-1.jpg);
+    background-size: cover;
+    background-position: center;
+    width: 200px;
+    height: 200px;
+    border-radius: 10px;
+}
+
+.results-template {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 100px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+    padding:10px;
+}
+
+.left-side {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 20px;
+}
+.room-details {
+    border-left: solid 1px #979797;
+    padding-left: 20px;
+}
+    .room-details a {
+        font-size: 20px;
+        color: #000;
+    }
+    .room-details a:hover {
+        color:#007bff;
+        text-decoration: none;
+        cursor:pointer;
+    }
+
+
+.room-details h2 {
+    font-size: 16px;
+    color: #535252;
+    margin: -5px 0 30px;
+}
+
+.room-details h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-top: 35px;
+    color: #6e6e6e;
+}
+
+.room-details p {
+    color: #979797;
+    margin-bottom: 10px;
+}
+
+/* Right-side Stylings */
+.right-side {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    text-align: right;
+    width: 50%;
+}
+.room-rating { 
+    font-size: 18px;
+}
+.no-room-rating {
+    font-size: 16px;
+    color:#979797;
+    font-weight: 100;
+}
+
+.right-side h1 {
+    font-size: 14px;
+    color: #979797;
+    font-weight: 100;
+    margin-bottom: 5px;
+}
+
+.price-per-night {
+    font-size: 18px;
+    margin-bottom: 40px;
+}
+
+#booking-btn {
+    background: linear-gradient(45deg, #007bff, #00b7ff);
+    color: #fff;
+    border: none;
+    border-radius: 30px;
+    padding: 5px 20px;
+    cursor: pointer;
+    width: 75%;
+}
+        #booking-btn:hover {
+            background: linear-gradient(45deg, #0056b3, #0099cc);
+            cursor:pointer;
+        }
+        #booking-btn:focus {
+            outline: none;
+            border: none; /* Optional, in case there's any border applied on focus */
+            cursor:pointer;
+        }        
+/* Aside Stylings */
+.current-search-criteria {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    gap: 10px;
+}
+    .current-search-criteria h1 {
+        font-size: 25px;
+        font-weight: bolder;
+        margin: 5px;
+    }
+    .current-search-criteria i {
+        margin-right:5px;
+    }
+.selected-criteria {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    gap: 10px;
+}
+.selected-destination h1,
+.selected-check-in h1,
+.selected-check-out h1,
+.selected-room-type h1,
+.selected-price-range h1 {
+    font-size: 14px;
+    font-weight: bold;
+}
+    .destination,
+    .check-in-date,
+    .check-out-date,
+    .room-type,
+    .price-range {
+        color: #656565;
+        font-size: 14px;
+        text-align: center;
+        font-weight: 500;    
+    }
+
+/* Filter form stylings */
+.booking-form {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around; 
+        gap: 20px;
+    }
+    .booking-form select,
+    input#check-in-date.hasDatepicker,
+    input#check-out-date.hasDatepicker,
+    .booking-form button {
+        width: 100%;
+        padding: 8px;
+        font-size: 14px;
+        border-radius: 10px;
+        border: 1px solid #ccc;
+        margin-top: 5px;
+        text-align: center;
+        color: #6c757d;
+        box-sizing: border-box;
+    }
+        
+.filter-section {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    margin-top: 30px;
+}
+    .filter-section h3 {
+     font-size: 25px;
+    font-weight: bolder;
+    margin: 10px 0px 30px;
+}
+ .flex-direction {   
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+ }
+    
+    .flex-direction label {
+        font-size: 15px;
+        font-weight: bold;   
+    }
+    
+    .flex-direction button {
+        background: linear-gradient(45deg, #007bff, #00b7ff);
+        color: #fff;
+        border: none;
+        border-radius: 30px;
+        padding: 15px 20px;
+        cursor: pointer;
+        width: 75%;
+        align-self: center;
+    }
+        .flex-direction button:hover {
+            background: linear-gradient(45deg, #0056b3, #0099cc);
+            cursor:pointer;   
+        }
+    .ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight {
+        border: 1px solid #1e1e1e !important;
+        background: #a2a2a2 !important;
+        color: #000 !important;
+        border-radius: 0px;
+    }
+            input.ui-datepicker-input:focus {
+                outline: none;
+                border-color: #007bff;
+                box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+            }
+/* Styling the select dropdown */
+select#roomType {
+    width: 100%; 
+    padding: 10px; 
+    font-size: 16px; 
+    border: 1px solid #ccc; 
+    border-radius: 8px; 
+    background-color: #f9f9f9;
+    color: #333; 
+    cursor: pointer; 
+    transition: all 0.3s ease; /
+}
+
+
+select#roomType option:disabled {
+    color: #aaa; 
+    background-color: #e9e9e9; 
+}
+
+
+select#roomType:focus {
+    border-color: #007bff;
+    outline: none; 
+}
+
+
+select#roomType:hover {
+    background-color: #f1f1f1; 
+    cursor:pointer;
+}
+
+
+select#roomType::-ms-expand {
+    display: none;
+}
+
+select#roomType {
+    appearance: none; 
+    -webkit-appearance: none; 
+    -moz-appearance: none; 
+    background-image: url('path/to/your/custom-arrow.png'); 
+    background-repeat: no-repeat;
+    background-position: right 10px center; 
+    padding-right: 40px; 
+}
+
+
+.room-type {
+    position: relative; 
+    margin-bottom: 20px; 
+}
+
+
+select#roomType:focus {
+    border-color: #007bff; 
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); 
+}
+
+#date-error-message {
+    display:none;
+    color: #dc3545; 
+    background-color: #f8d7da;
+    border: 1px solid #dc3545;
+    border-radius: 8px; 
+    padding: 10px; 
+    font-weight: 600; 
+    font-size: 14px; 
+    margin-top: 10px; 
+    text-align: center; 
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+            #date-error-message  p {
+                margin:0px;
+                padding:1px;
+            }
+/* Styles for the price input container */
+.price-input-container {
+    width: 100%;
+}
+
+h2.pricetitle{
+    font-size:15px;
+    font-weight:bold;
+}
+
+.price-input .price-field {
+    display: flex;
+    margin-bottom: 22px;
+    flex-direction: column;
+}
+
+.price-field span {
+    margin-right: 10px;
+    margin-top: 6px;
+    font-size: 14px;
+    color:#6c757d;
+}
+
+.price-field input {
+    flex: 1;
+    height: 35px;
+    font-size: 15px;
+    font-family: "DM Sans", sans-serif;
+    border-radius: 5px;
+    text-align: center;
+    border: 1px solid #ccc;;
+    background: #fff;
+}
+
+.price-input {
+    width: 100%;
+    font-size: 19px;
+    color: #555;
+}
+
+/* Remove Arrows/Spinners */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.slider {
+    width: 100%;
+}
+
+.slider {
+    height: 6px;
+    position: relative;
+    background: #e4e4e4;
+    border-radius: 5px;
+}
+
+.slider .price-slider {
+    height: 100%;
+    left: 25%;
+    right: 15%;
+    position: absolute;
+    border-radius: 5px;
+    background: #007bff;
+}
+
+.range-input {
+    position: relative;
+}
+
+.range-input input {
+    position: absolute;
+    width: 100%;
+    height: 5px;
+    background: none;
+    top: -5px;
+    pointer-events: none;
+    cursor: pointer;
+    -webkit-appearance: none;
+    left: 0px;
+}
+
+/* Styles for the range thumb in WebKit browsers */
+input[type="range"]::-webkit-slider-thumb {
+    height: 18px;
+    width: 18px;
+    border-radius: 70%;
+    background: #555;
+    pointer-events: auto;
+    -webkit-appearance: none;
+}
+
+@media screen and (max-width: 768px) {
+    .main {
+        width: 80%;
+        margin-right: 5px;
+    }
+
+    .custom-wrapper {
+        width: 100%;
+        left: 0;
+        padding: 0 10px;
+    }
+
+    .projtitle {
+        width: 100%;
+        position: relative;
+        right: 26px;
+    }
+
+    .price-input {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .price-field {
+        margin-bottom: 10px;
+    }
+}
+/* Footer styles */
+footer {
+    width: 100%;
+    background: rgba(73, 80, 87, 0.85);
+    text-align: center;
+    font-size: 12px;
+    border-top: solid 2px #383d41;
+    box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.15);
+    padding: 0px;
+}
+
+footer p {
+    color: #ced4da;
+    margin: 0;
+}
+/* Your existing CSS remains unchanged */
+
+/* Comprehensive Media Queries for Responsiveness */
+
+/* Large devices (desktops, less than 1200px) */
+@media (max-width: 1199.98px) {
+    .wrapper {
+      padding: 30px;
+    }
+    
+    .results-template {
+      gap: 50px;
+    }
+    
+    .right-side {
+      width: 40%;
+    }
+    
+    #booking-btn {
+      width: 85%;
+    }
+  }
+  
+  /* Medium devices (tablets, less than 992px) */
+  @media (max-width: 991.98px) {
+    header {
+      padding: 10px 20px;
+    }
+    
+    .left-content {
+      gap: 15px;
+    }
+    
+    .wrapper {
+      padding: 20px;
+    }
+    
+    .results-template {
+      gap: 30px;
+    }
+    
+    .left-side {
+      gap: 15px;
+    }
+    
+    .right-side {
+      width: 45%;
+    }
+    
+    .room-details h1 a {
+      font-size: 18px;
+    }
+    
+    .selected-criteria {
+      gap: 5px;
+    }
+    
+    .filter-section h3 {
+      font-size: 22px;
+      margin: 5px 0px 20px;
+    }
+    
+    .flex-direction button {
+      padding: 10px 15px;
+      width: 85%;
+    }
+  }
+  
+  /* Small devices (landscape phones, less than 768px) */
+  @media (max-width: 767.98px) {
+    header {
+      flex-direction: column;
+      padding: 15px;
+    }
+    
+    .left-content {
+      width: 100%;
+      justify-content: space-between;
+      margin-bottom: 15px;
+    }
+    
+    nav ul {
+      gap: 15px;
+    }
+    
+    .wrapper {
+      flex-direction: column;
+      padding: 15px;
+    }
+    
+    .current-search-criteria {
+      width: 100%;
+      margin-bottom: 20px;
+      order: -1; 
+    }
+    
+    .results {
+      width: 100%;
+    }
+    
+    .results h1 {
+      font-size: 15px;
+      margin-bottom: 30px;
+    }
+    
+    .results-template {
+      flex-direction: column;
+      gap: 20px;
+      align-items: flex-start;
+    }
+    
+    .left-side {
+      width: 100%;
+    }
+    
+    .right-side {
+      width: 100%;
+      text-align: left;
+      margin-top: 15px;
+    }
+    
+    #booking-btn {
+      width: 100%;
+      margin-top: 15px;
+    }
+    
+    /* Adjustments for your existing 768px media query */
+    .main {
+      width: 100%;
+      margin-right: 0;
+    }
+    
+    .price-input {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    
+    .price-field {
+      width: 100%;
+    }
+    
+    /* Additional adjustments */
+    .room-img {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+    }
+    
+    .selected-criteria {
+      gap: 15px;
+    }
+    
+    .selected-destination h1,
+    .selected-check-in h1,
+    .selected-check-out h1,
+    .selected-room-type h1,
+    .selected-price-range h1 {
+      margin-bottom: 5px;
+    }
+  }
+  
+  /* Extra small devices (phones, less than 576px) */
+  @media (max-width: 575.98px) {
+    .restify-title a {
+      font-size: 22px;
+    }
+    
+    header {
+      padding: 10px;
+    }
+    
+    nav ul {
+      gap: 10px;
+    }
+    
+    nav ul li a {
+      font-size: 14px;
+    }
+    
+    .auth-buttons {
+      gap: 5px;
+    }
+    
+    .wrapper {
+      padding: 10px;
+    }
+    
+    .results-img {
+      width: 150px;
+      height: 150px;
+    }
+    
+    .left-side {
+      flex-direction: column;
+      gap: 15px;
+    }
+    
+    .room-details {
+      border-left: none;
+      padding-left: 0;
+      border-top: solid 1px #979797;
+      padding-top: 15px;
+      width: 100%;
+    }
+    
+    .current-search-criteria h1 {
+      font-size: 22px;
+    }
+    
+    .filter-section h3 {
+      font-size: 20px;
+      margin: 5px 0px 15px;
+    }
+    
+    .booking-form {
+      gap: 15px;
+    }
+    
+    .flex-direction label {
+      font-size: 14px;
+    }
+    
+    .booking-form select,
+    input#check-in-date.hasDatepicker,
+    input#check-out-date.hasDatepicker,
+    .booking-form button {
+      padding: 6px;
+      font-size: 13px;
+    }
+    
+    .price-input .price-field input {
+      height: 30px;
+    }
+    
+    /* Room rating and pricing adjustments */
+    .room-rating {
+      font-size: 16px;
+      margin-bottom: 5px;
+    }
+    
+    .price-per-night {
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+    
+    /* Fix datepicker UI on small screens */
+    .ui-datepicker {
+      width: 280px;
+    }
+  }
+  
+  /* Very small devices (small phones, less than 400px) */
+  @media (max-width: 399.98px) {
+    .restify-title a {
+      font-size: 20px;
+    }
+    
+    header {
+      padding: 8px;
+    }
+    
+    .left-content {
+      gap: 8px;
+    }
+    
+    nav ul {
+      gap: 8px;
+    }
+    
+    nav ul li a {
+      font-size: 13px;
+    }
+    
+    .profile-btn a {
+      font-size: 12px;
+    }
+    
+    .profile-btn i.fas.fa-user {
+      padding: 8px;
+      margin-right: 3px;
+    }
+    
+    .results h1 {
+      font-size: 20px;
+      margin-bottom: 20px;
+    }
+    
+    .results-img {
+      width: 120px;
+      height: 120px;
+    }
+    
+    .room-details h1 a {
+      font-size: 16px;
+    }
+    
+    .room-details h2 {
+      font-size: 14px;
+      margin: -5px 0 20px;
+    }
+    
+    .room-details h3 {
+      font-size: 14px;
+    }
+    
+    .right-side h1 {
+      font-size: 12px;
+    }
+    
+    /* Further minimize booking form elements */
+    .current-search-criteria {
+      padding: 15px;
+    }
+    
+    .selected-destination h1,
+    .selected-check-in h1,
+    .selected-check-out h1,
+    .selected-room-type h1,
+    .selected-price-range h1 {
+      font-size: 13px;
+    }
+    
+    .destination,
+    .check-in-date,
+    .check-out-date,
+    .room-type,
+    .price-range {
+      font-size: 12px;
+    }
+    
+    /* Fix footer at small sizes */
+    footer p {
+      padding: 5px;
+      font-size: 11px;
+    }
+  }
